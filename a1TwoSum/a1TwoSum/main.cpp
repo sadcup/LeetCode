@@ -12,6 +12,7 @@
 using namespace std;
 #define unordered_map map
 
+////1. The initial idea: Binary search
 //class Solution {
 //public:
 //    int find(vector<int> &numbers, int start, int end, int target) {
@@ -64,6 +65,49 @@ using namespace std;
 //    }
 //};
 
+////2. An advanced idea
+//class Solution {
+//public:
+//    vector<int> twoSum(vector<int> &numbers, int target) {
+//        vector<int> ret(2, 0);
+//        vector<int> copyNum = numbers;
+//        sort(copyNum.begin(), copyNum.end());
+//        int head = 0;
+//        int tail = copyNum.size()-1;
+//        while (head < tail) {
+//            int value = copyNum[head]+copyNum[tail];
+//            if (value == target) {
+//                ret[0] = head;
+//                ret[1] = tail;
+//                break;
+//            } else if(value > target) {
+//                tail--;
+//            } else {
+//                head ++;
+//            }
+//        }
+//
+//
+//
+//        bool flag1 = false;
+//        bool flag2 = false;
+//        for (int i=0; i<numbers.size(); i++) {
+//            if (!flag1 && numbers[i]==copyNum[ret[0]]) {
+//                flag1 = true;
+//                ret[0] = i+1;
+//            }else if (!flag2 && numbers[i]==copyNum[ret[1]]) {
+//                flag2 = true;
+//                ret[1] = i+1;
+//            }
+//        }
+//
+//        if (ret[0] > ret[1]) swap(ret[0], ret[1]);
+//
+//        return ret;
+//    }
+//};
+
+//3. Use unordered map
 class Solution {
 public:
     vector<int> twoSum(vector<int> &numbers, int target) {
