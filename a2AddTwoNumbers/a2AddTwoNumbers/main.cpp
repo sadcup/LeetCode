@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <vector>
+#include <map>
+#include <set>
 using namespace std;
 
 //Definition for singly-linked list.
@@ -78,12 +80,15 @@ int main(int argc, const char * argv[]) {
     vector<int> num1 = {2, 4, 3};
     vector<int> num2 = {5, 6, 4, 1};
     
+    set<ListNode *> myMemory;
+    
     ListNode * l1 = num1.size() ? new ListNode(num1[0]) : NULL;
     ListNode * l2 = num2.size() ? new ListNode(num2[0]) : NULL;
     
     ListNode * tmpl1 = l1;
     for (int i=1; i<num1.size(); i++) {
         ListNode * node = new ListNode(num1[i]);
+        myMemory.insert(node);
         tmpl1->next = node;
         tmpl1 = tmpl1->next;
     }
@@ -91,6 +96,7 @@ int main(int argc, const char * argv[]) {
     ListNode * tmpl2 = l2;
     for (int i=1; i<num2.size(); i++) {
         ListNode * node = new ListNode(num2[i]);
+        myMemory.insert(node);
         tmpl2->next = node;
         tmpl2 = tmpl2->next;
     }
@@ -101,7 +107,20 @@ int main(int argc, const char * argv[]) {
     Solution s;
     ListNode * ret = s.addTwoNumbers(l1, l2);
     
+    ListNode * tmp = ret;
+    while (tmp) {
+        myMemory.insert(tmp);
+        tmp = tmp->next;
+    }
+    
     print(ret);
+    
+    //free the memory
+    
+    
+    for (set<ListNode *>::iterator iter = myMemory.begin(); iter!=myMemory.end(); ++iter) {
+        delete *iter;
+    }
     
     return 0;
 }
