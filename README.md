@@ -5,4 +5,5 @@ My understanding and solution to the LeetCode algorithm problems
 - Add Two Numbers √
 - Longest Substring Without Repeating Characters √
 - Median of Two Sorted Arrays √
-
+- Longest Palindromic Substring √
+- ZigZag Conversion √
