@@ -7,3 +7,5 @@ My understanding and solution to the LeetCode algorithm problems
 - Median of Two Sorted Arrays √
 - Longest Palindromic Substring √
 - ZigZag Conversion √
+- Reverse Integer √
+- String to Integer (atoi) √
